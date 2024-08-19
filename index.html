@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Idade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #636262;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-top: 200px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: calc(100% - 22px); /* Ajusta a largura para caber com padding */
+            margin: 10px 0;
+            border: 1px solid #1e065f;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #121157;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #4c41b4;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Verificação de Idade</h1>
+        <input type="number" id="idadeInput" placeholder="Digite sua idade" min="0">
+        <button onclick="verificarIdade()">Verificar</button>
+        <div id="mensagem" class="message"></div>
+    </div>
+
+    <script>
+        function verificarIdade() {
+            // Obtém o valor do input
+            let idade = document.getElementById('idadeInput').value;
+
+            // Obtém o elemento onde a mensagem será exibida
+            let mensagemDiv = document.getElementById('mensagem');
+
+            // Verifica se a idade é um número e não está vazia
+            if (idade.trim() !== "" && !isNaN(idade)) {
+                idade = parseInt(idade, 10);
+                
+                // Exibe a mensagem com base na idade
+                if (idade >= 18) {
+                    mensagemDiv.textContent = "Você é maior de idade.";
+                    mensagemDiv.style.color = "#28a745"; // Cor verde para maior de idade
+                } else {
+                    mensagemDiv.textContent = "Você é menor de idade.";
+                    mensagemDiv.style.color = "#dc3545"; // Cor vermelha para menor de idade
+                }
+            } else {
+                // Mensagem de erro se a entrada não for válida
+                mensagemDiv.textContent = "Por favor, insira uma idade válida.";
+                mensagemDiv.style.color = "#dc3545"; // Cor vermelha para erro
+            }
+        }
+    </script>
+</body>
+</html>
